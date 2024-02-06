@@ -1,0 +1,25 @@
+// Define function to open Claude and evaluate document
+function evaluateDocument() {
+
+  // Open Claude
+  window.open("https://www.anthropic.com"); 
+  
+  // Allow Claude time to load
+  setTimeout(function() {
+
+    // Upload active document from Word
+    claude.uploadDocument(document.activeElement.nodeValue);
+    
+    // Upload instructions 
+    var instructions = "Instruction: Count how many characters the current file has.";
+    claude.uploadInstructions(instructions);
+
+    // Evaluate document by instructions
+    claude.evaluateByInstructions();
+
+  }, 2000);
+
+}
+
+// Call function when executed
+evaluateDocument();
